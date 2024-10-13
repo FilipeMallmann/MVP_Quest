@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://v46dg30viqui"]
+
+[ext_resource type="Script" path="res://assets/moviment.gd" id="1_ip76i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mx56t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_buw4m"]
+
+[node name="Player" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_ip76i")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 3.4, 2.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("CapsuleShape3D_mx56t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+mesh = SubResource("CapsuleMesh_buw4m")
