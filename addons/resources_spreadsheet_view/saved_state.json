@@ -1,0 +1,39 @@
+{
+  "hidden_columns": {
+    "res://example/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://example/Items/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://example/Items/items/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://example/Random Upgrades/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://example/Random Upgrades/icons/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://example/itens/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    }
+  },
+  "recent_paths": [
+    "res://example/Items/",
+    "res://example/",
+    "res://example/Random Upgrades/icons/",
+    "res://example/Random Upgrades/",
+    "res://example/itens/",
+    "res://example/Items/items/"
+  ],
+  "table_functions": {
+
+  }
+}
