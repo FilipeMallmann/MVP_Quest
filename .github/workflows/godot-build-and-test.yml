@@ -1,0 +1,57 @@
+name: Godot Test and Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run GDScript Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Download the Godot Headless version to run tests
+      - name: Download Godot Headless
+        uses: firebelley/setup-godot@v1
+        with:
+          version: '4.2.1' # Replace with your Godot version
+          headless: true
+
+      # Run unit tests using the Godot headless version
+      - name: Run GDScript Unit Tests
+        run: godot --headless --no-window --path . -s addons/gut/gut_cmdln.gd -d res://path_to_your_tests
+
+  build:
+    name: Build Game Executable
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Download the Godot standard version to export the game
+      - name: Download Godot Standard
+        uses: firebelley/setup-godot@v1
+        with:
+          version: '4.2.1' # Replace with your Godot version
+
+      # Export game to Windows, Linux, macOS
+      - name: Export Game for Windows
+        run: godot --export "Windows Desktop" ./build/my_game.exe
+      - name: Export Game for Linux
+        run: godot --export "Linux/X11" ./build/my_game.x86_64
+      - name: Export Game for macOS
+        run: godot --export "Mac OSX" ./build/my_game.dmg
+
+      # Upload the builds as artifacts
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: game-builds
+          path: ./build/
