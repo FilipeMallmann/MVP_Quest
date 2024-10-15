@@ -46,8 +46,6 @@ jobs:
         run: godot --export "Windows Desktop" ./build/my_game.exe
       - name: Export Game for Linux
         run: godot --export "Linux/X11" ./build/my_game.x86_64
-      - name: Export Game for macOS
-        run: godot --export "Mac OSX" ./build/my_game.dmg
 
       # Upload the builds as artifacts
       - name: Upload Build Artifacts
